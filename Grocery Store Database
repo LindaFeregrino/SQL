@@ -1,0 +1,31 @@
+--Create a grocery store database
+CREATE TABLE clothing_store(id INTEGER PRIMARY KEY, item TEXT, price INTEGER, aisle INTEGER, inventory INTEGER, color TEXT, season TEXT);
+
+INSERT INTO clothing_store VALUES(1, "beanie", 3.99, 5, 7, "blue", "winter");
+INSERT INTO clothing_store VALUES(3, "tank top", 5.50, 12, 8, "white", "summer");
+INSERT INTO clothing_store VALUES(6, "snow pants", 12.50, 1, 3, "gray", "winter");
+INSERT INTO clothing_store VALUES(5, "long-sleeve", 9.50, 12, 10, "brown", "winter");
+INSERT INTO clothing_store VALUES(2, "beret", 2.50, 5, 3, "pink", "spring");
+INSERT INTO clothing_store VALUES(7, "shorts", 10.20, 1, 6, "white", "summer");
+INSERT INTO clothing_store VALUES(4, "t-shirt", 7.00, 12, 10, "blue", "summer");
+
+
+--display the database ordered by price. 
+SELECT * FROM clothing_store ORDER BY price;
+
+--what is the total inventory per aisle?
+SELECT aisle, SUM(inventory) FROM clothing_store GROUP BY aisle;
+
+--display total inventory by season
+SELECT season, SUM(inventory) FROM clothing_store GROUP BY season;
+
+--what is the avg price of items in the winter section? 
+SELECT AVG(price), season FROM clothing_store GROUP BY season;
+
+--display all items with a price above $5.00
+SELECT * FROM clothing_store WHERE price>5.00 ORDER BY price;
+
+--show the top 3 most expensive items
+SELECT item, price FROM clothing_store ORDER BY price DESC LIMIT 3;
+
+
