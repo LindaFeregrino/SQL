@@ -110,11 +110,13 @@ FROM superbowls GROUP BY pt_differential;
 SELECT "game_outcome", COUNT(*), 
  CASE 
         WHEN pt_differential<= 7 THEN "close_game"
-        WHEN pt_differential>= 17 THEN "blow_out" ELSE "anyonesgame"
+        WHEN pt_differential>= 17 THEN "blow_out" 
+        ELSE "anyonesgame"
     END game_outcome
 FROM superbowls;
 
 
 /*Filter Data to show all winning teams with more than 30 winning points and loosing teams with less than 30 loosing points*/
+SELECT Winner, Winner_Pts, Loser, Loser_Pts FROM superbowls WHERE Winner_Pts>30 AND Loser_Pts<30;
 
 
